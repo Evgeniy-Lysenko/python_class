@@ -11,7 +11,8 @@ def get_valid_date(): # Перевірка введенної дати
 
 input_date = get_valid_date()
 
-
-days = (today_date - input_date).days  
-print(days)
+def get_days_from_today(date):
+    return (today_date - date).days
+ 
+print(get_days_from_today(input_date))
 
