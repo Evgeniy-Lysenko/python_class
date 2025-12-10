@@ -11,7 +11,7 @@ def get_valid_date(): # Перевірка введенної дати
 
 input_date = get_valid_date()
 
-def get_days_from_today(date):
+def get_days_from_today(date): # Розрахунок кількості днів між двома датами
     return (today_date - date).days
  
 print(get_days_from_today(input_date))
