@@ -1,23 +1,20 @@
 # generation of a random number for lottery
 import random
-min = 0
-max = 0
-quantity = 0
-def get_min_max_quantity(): 
+def get_min_max_quantity(): # Функція для отримання даних з користувача та перевірки введених даних
     while True:
-        min = int(input("Enter the minimum \>0: "))
-        max = int(input("Enter the maximum quantity \<1000: "))
-        quantity = int(input("Enter the quantity: "))
+        min_value = int(input(f"Enter the minimum from 1 to 1000: "))
+        max_value = int(input(f"Enter the maximum from {(min_value+1)} to 1000: "))
+        quantity = int(input(f"Enter the quantity of numbers from 1 to {(max_value - min_value + 1)}: "))
        
-        if 0 < min <= (max - quantity) and max <=1000:
-            return min, max, quantity
+        if 0 < min_value < max_value and max_value < 1001 and 0 < quantity <= (max_value - min_value + 1): # Перевірка коректності введених даних
+            return min_value, max_value, quantity
         else:   
             print("Invalid input. Please try again.") # Повідомлення про помилку
 
 
 
 def get_numbers_ticket(min, max, quantity): # Генерація випадкового числа
-   return [random.randint(min, max) for _ in range(quantity)]
+    return random.sample(range(min, max + 1), quantity)
 
-min_value, max_value, quantity = get_min_max_quantity()
-print(get_numbers_ticket(min_value, max_value, quantity))
+min, max, quantity = get_min_max_quantity() # Виклик функції для отримання даних з користувача
+print("Ваші лотерейні числа:", get_numbers_ticket(min, max, quantity)) # Вивід варіантів випадкових чисел для лотереї по заданим користувачем параметрам 
