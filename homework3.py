@@ -14,12 +14,13 @@ raw_numbers = [
     "(050)8889900",
     "0-111-22-22",
     "00003850 111 22 11   ",
+    "asd@dfg",
 ]
 
 def normalize_phone(phone_number): # Функція для нормалізації номерів телефонів
     result_of_sub = re.sub(r'\D', '', phone_number) # Видаляємо всі нецифри
     if result_of_sub.startswith('380') and len(result_of_sub) == 12: # Перевірка на наявність коду країни та має 12 цифр
-        return "+" + result_of_sub # Повертаємо номер з +
+        return "+" + result_of_sub  # Повертаємо номер з +
     if len(result_of_sub) == 9: # Перевірка на кількість цифр, якщо має 9 додаємо +380
         return "+380" + result_of_sub
     if result_of_sub.startswith('0') and len(result_of_sub) == 10: # Перевірка якщо номер починається на 0 та має 10 цифр
@@ -32,7 +33,11 @@ for num in raw_numbers: # Перебираємо всі номери
     else:
         invalid_numbers.append(num) # Додаємо невалідний номер телефону в список invalid_numbers
 
+print("Невалідні номери телефонів:") # Виведення невалідних номерів
+for num in invalid_numbers:
+    print(num)
 
-print("Невалідні номери телефонів:", invalid_numbers)
-print("Валідні номери телефонів:", valid_numbers)
+print("\nНормалізовані номери телефонів для SMS-розсилки:") # Виведення валідних номерів
+for num in valid_numbers:
+    print(num)
 
