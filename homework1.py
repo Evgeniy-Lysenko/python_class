@@ -1,10 +1,10 @@
 # the number of days between a given date and a current date
-from datetime import datetime
+from datetime import datetime, date
 
 def get_days_from_today(input_date): # Розрахунок кількості днів між двома датами
     try:
-            input_date = datetime.strptime(input_date, "%Y-%m-%d") # Перетворення дати в об'єкт datetime 
-            today_date = datetime.now() # Отримання поточнї дату
+            input_date = datetime.strptime(input_date, "%Y-%m-%d").date() # Перетворення дати в об'єкт datetime 
+            today_date = date.today() # Отримання поточнї дату
             return (input_date - today_date).days 
     except ValueError:
             return "Invalid date format. Please try again." # Повідомлення про помилку при неправильному форматі дати
